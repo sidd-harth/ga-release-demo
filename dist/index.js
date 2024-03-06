@@ -36853,7 +36853,7 @@ async function run() {
       console.log(`Giphy GIF comment added successfully! Comment URL: ${prComment.data.images.downsized.url}`);
     } catch (error) {
       // console.error('Error:', error);
-      core.setFailed('Invalid secret provided!');
+    //  core.setFailed('Invalid secret provided!');
       
       // process.exit(1);
     }
