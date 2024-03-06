@@ -7,6 +7,10 @@ inputs:
   giphy-api-key:
     description: 'Giphy API Key'
     required: true
+  name:
+    description: 'Sample Hardcoded Name'
+    required: false
+    default: 'Siddharthhhhhhhh'
 
 runs:
   using: 'node20'
