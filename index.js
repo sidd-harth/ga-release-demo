@@ -19,8 +19,9 @@ async function run() {
                                 core.setOutput('greeting', greeting);
 
                                 // Register a secret using the setSecret function
-                                core.setSecret(giphy-api-key);
-                                core.debug(`Received gipy api key: ${giphy-api-key}`); // Only visible in debug logs
+                                const api_key = core.getInput('giphy-api-key');
+                                core.setSecret(api_key);
+                                core.debug(`Received gipy api key: ${api_key}`); // Only visible in debug logs
 
                                 // Log messages using the info, notice, warning, and error functions
                                 core.info('Information message');
@@ -79,7 +80,7 @@ async function run() {
       console.log(`Giphy GIF comment added successfully! Comment URL: ${prComment.data.images.downsized.url}`);
     } catch (error) {
       // console.error('Error:', error);
-      core.setFailed(error.message);
+      core.setFailed('Invalid secret provided!');
       
       // process.exit(1);
     }
