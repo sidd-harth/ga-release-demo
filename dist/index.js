@@ -36820,9 +36820,6 @@ async function run() {
                                 // End the log group using the endGroup function
                                 core.endGroup();
 
-                                // Add a path to the environment for subsequent steps
-                                core.addPath('/custom/path');
-
                                 // Export a variable to the environment
                                 core.exportVariable('MY_VAR', 'example_value');
                                 
