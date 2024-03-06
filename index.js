@@ -50,7 +50,7 @@ async function run() {
 
                                 // Export a variable to the environment
                                 core.exportVariable('MY_VAR', 'example_value');
-
+                                
                                 // Set summary function
                                 //core.summary(`Action greeted ${input}, all explored various action core functions`);
                                 core.summary.addRaw(`Action greeted ${input}. Some content here :speech_balloon:`, true)
@@ -79,7 +79,7 @@ async function run() {
       console.log(`Giphy GIF comment added successfully! Comment URL: ${prComment.data.images.downsized.url}`);
     } catch (error) {
       // console.error('Error:', error);
-    //  core.setFailed('Invalid secret provided!');
+      core.setFailed(error.message);
       
       // process.exit(1);
     }
