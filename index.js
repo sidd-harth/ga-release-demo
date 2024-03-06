@@ -7,19 +7,20 @@ async function run() {
     try {
                                 // Get an input using the getInput function
                                 const input = core.getInput('name');
-                                core.info(`Input received: ${input}`);
 
-                                // Set an output using the setOutput function
-                                core.setOutput('output_name', 'output_value');
+                                // Prepare a greeting message
+                                const greeting = `Hello, ${input}!`;
+                                core.info(greeting);
 
-                                // Export a variable using the exportVariable function
-                                core.exportVariable('variable_name', 'variable_value');
+                                // Only visible in debug logs
+                                core.debug(`Received Input: ${input}`); 
 
-                                // Add a path using the addPath function
-                                core.addPath('/path/to/tool');
+                                // Set the output named `greeting`
+                                core.setOutput('greeting', greeting);
 
                                 // Register a secret using the setSecret function
-                                core.setSecret('secret_name');
+                                core.setSecret(input);
+                                core.debug(`Received secret: ${input}`); // Only visible in debug logs
 
                                 // Log messages using the info, notice, warning, and error functions
                                 core.info('Information message');
@@ -33,7 +34,7 @@ async function run() {
                                 }
 
                                 // Start a log group using the startGroup function
-                                core.startGroup('group_name');
+                                core.startGroup('testing_group_logs');
 
                                 // Log some messages inside the group
                                 core.info('Information message inside group');
@@ -43,6 +44,10 @@ async function run() {
 
                                 // End the log group using the endGroup function
                                 core.endGroup();
+
+                                // Set summary function
+                                core.summary(`Action greeted ${input}, all explored various action core functions`);
+
 
 
       const githubToken = core.getInput('github-token');
@@ -67,6 +72,7 @@ async function run() {
       console.log(`Giphy GIF comment added successfully! Comment URL: ${prComment.data.images.downsized.url}`);
     } catch (error) {
       console.error('Error:', error);
+      core.setFailed(error.message);
       process.exit(1);
     }
   }
