@@ -1,0 +1,21 @@
+on:
+  push:
+  pull_request: 
+        types:
+         - opened
+
+jobs:
+  testing-action:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Post PR Comment
+      uses: ./
+      with:
+        github-token: 123
+        giphy-api-key: 3124324
