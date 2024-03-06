@@ -46,7 +46,8 @@ async function run() {
                                 core.endGroup();
 
                                 // Set summary function
-                                core.summary(`Action greeted ${input}, all explored various action core functions`);
+                                //core.summary(`Action greeted ${input}, all explored various action core functions`);
+                                core.summary.addRaw(`Action greeted ${input}. Some content here :speech_balloon:`, true)
 
 
 
