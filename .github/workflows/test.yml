@@ -19,7 +19,7 @@ on:
         type: choice
         options:
           - india
-          - usa
+          - canada
           - others  
 
 jobs:
