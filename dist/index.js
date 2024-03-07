@@ -25881,7 +25881,9 @@ const inputCountry = core.getInput('country', { required: true });
 // Check if debug mode is enabled
 if (core.isDebug()) {
   core.info('This Action is running in debug mode.');
+  core.debug('This Action is running in debug mode.');
 }
+core.info("================================================");
 
 // Prepare a greeting message
 const greeting = `Hello, ${nameInput}, your phone number is ${secretPhoneInput}`;
@@ -25890,6 +25892,8 @@ core.info(`Information message: ${greeting}`);
 core.notice(`Notice message: ${greeting}`);
 core.warning(`Warning message: ${greeting}`);
 core.error(`Error message: ${greeting}`);
+
+core.info("================================================");
 
 // Set the output named `customized_greeting`
 core.setOutput('customized_greeting', greeting);
@@ -25903,27 +25907,28 @@ if (secretPhoneInput.length !== 10) {
     case 'india':
         //const phoneNumber = "+91" + secretPhoneInput;
         // Export a variable to the environment
-        core.exportVariable('JS_ACTION_PHONE_VAR', "91");
+        core.exportVariable('JS_ACTION_PHONE_VAR', "+91"+secretPhoneInput);
         break;
     case 'canada':
       //const phoneNumber = "+1" + secretPhoneInput;
       // Export a variable to the environment
-      core.exportVariable('JS_ACTION_PHONE_VAR', "1");
+      core.exportVariable('JS_ACTION_PHONE_VAR', "1"+secretPhoneInput);
         break;
     default:
-        console.log('Positive value other than 1 or 2');
+      core.exportVariable('JS_ACTION_PHONE_VAR', secretPhoneInput);
 
   // Log a notice and summary
-  core.notice('Action executed successfully.');
   core.summary(`Action greeted ${nameInput}, set the "greeting" output, and added a path and variable to the environment.`);
 }
 }
+
+core.info("================================================");
+
 // Register a secret using the setSecret function
 core.info(`Received Phone Number: ${secretPhoneInput}`); 
-core.debug(`Received Phone Number: ${secretPhoneInput}`); 
 core.setSecret(secretPhoneInput);
-core.info(`Secret Phone Number: ${secretPhoneInput}`);
-core.debug(`Secret gipy api key: ${secretPhoneInput}`); // Only visible in debug logs
+core.info(`MASKED Received Phone Number: ${secretPhoneInput}`);
+
 })();
 
 module.exports = __webpack_exports__;

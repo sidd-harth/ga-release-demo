@@ -1,8 +1,26 @@
 on:
   push:
-  pull_request: 
-        types:
-         - opened
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'User name'
+        required: true
+        default: 'Sid'
+        type: string
+      phone:
+        description: 'Phone Number'
+        required: true
+        default: 9876543210
+        type: number
+      country:
+        description: 'User Country'
+        required: true
+        default: 'india'
+        type: choice
+        options:
+          - india
+          - usa
+          - others
 
 jobs:
   testing-action:
@@ -18,11 +36,10 @@ jobs:
       id: test_step
       uses: ./
       with:
-        name: 'revz'
-        phone: '9876543210'
-        country: 'india'
+        name: ${{ inputs.name }}
+        phone: ${{ inputs.phone }}
+        country: ${{ inputs.country }}
 
     - name: Post PR Comment2222222
       run: |
           echo "Output is: ${{ steps.test_step.outputs.customized_greeting }}""
-          echo $JS_ACTION_PHONE_VAR
