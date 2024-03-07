@@ -15,7 +15,14 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Post PR Comment
+      id: test_step
       uses: ./
       with:
-        github-token: 123
-        giphy-api-key: 3124324
+        name: 'revz'
+        phone: '9876543210'
+        country: 'india'
+
+    - name: Post PR Comment2222222
+      runs: |
+          echo "Output is: ${{ steps.test_step.outputs.customized_greeting }}""
+          echo $JS_ACTION_PHONE_VAR

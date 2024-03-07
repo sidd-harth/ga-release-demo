@@ -11,6 +11,18 @@ inputs:
     description: 'Sample Hardcoded Name'
     required: false
     default: 'Siddharthhhhhhhh'
+  phone:
+    description: 'Sample Hardcoded Name'
+    required: false
+    default: 'Siddharthhhhhhhh'
+  country:
+    description: 'Sample Hardcoded Name'
+    required: false
+    default: 'Siddharthhhhhhhh'
+outputs:
+  customized_greeting:
+   description: 'GitHub Token'
+
 
 runs:
   using: 'node20'

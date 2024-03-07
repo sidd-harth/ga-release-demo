@@ -1,85 +1,53 @@
-const { Octokit } = require('@octokit/rest');
-const Giphy = require('giphy-api');
 const core = require('@actions/core');
-const github = require('@actions/github');
 
-async function run() {
-    try {
-                                // Get an input using the getInput function
-                                const input = core.getInput('name');
+// Define inputs using the getInput function
+const nameInput = core.getInput('name', { required: true });
+const secretPhoneInput = core.getInput('phone', { required: true });
+const inputCountry = core.getInput('country', { required: true });
 
-                                // Prepare a greeting message
-                                const greeting = `Hello, ${input}!`;
-                                core.info(greeting);
+// Check if debug mode is enabled
+if (core.isDebug()) {
+  core.info('This Action is running in debug mode.');
+}
 
-                                // Only visible in debug logs
-                                core.debug(`Received Input: ${input}`); 
+// Prepare a greeting message
+const greeting = `Hello, ${nameInput}, your phone number is ${secretPhoneInput}`;
+// Log messages using the info, notice, warning, and error functions
+core.info(`Information message: ${greeting}`);
+core.notice(`Notice message: ${greeting}`);
+core.warning(`Warning message: ${greeting}`);
+core.error(`Error message: ${greeting}`);
 
-                                // Set the output named `greeting`
-                                core.setOutput('greeting', greeting);
+// Set the output named `customized_greeting`
+core.setOutput('customized_greeting', greeting);
 
-                                // Register a secret using the setSecret function
-                                const api_key = core.getInput('giphy-api-key');
-                                core.setSecret(api_key);
-                                core.debug(`Received gipy api key: ${api_key}`); // Only visible in debug logs
+// Simulate an error scenario
+if (secretPhoneInput.length !== 10) {
+  core.error(`Error message - provided phone number is invalid  - ${secretPhoneInput}`);
+  //core.setFailed('Invalid phone number provided!');
+} else {
+  switch (inputCountry) {
+    case 'india':
+        //const phoneNumber = "+91" + secretPhoneInput;
+        // Export a variable to the environment
+        core.exportVariable('JS_ACTION_PHONE_VAR', "91");
+        break;
+    case 'canada':
+      //const phoneNumber = "+1" + secretPhoneInput;
+      // Export a variable to the environment
+      core.exportVariable('JS_ACTION_PHONE_VAR', "1");
+        break;
+    default:
+        console.log('Positive value other than 1 or 2');
 
-                                // Log messages using the info, notice, warning, and error functions
-                                core.info('Information message');
-                                core.notice('Notice message');
-                                core.warning('Warning message');
-                                core.error('Error message');
-
-                                // Check if debugging is enabled using the isDebug function
-                                if (core.isDebug()) {
-                                  core.debug('Debugging is enabled');
-                                }
-
-                                // Start a log group using the startGroup function
-                                core.startGroup('testing_group_logs');
-
-                                // Log some messages inside the group
-                                core.info('Information message inside group');
-                                core.notice('Notice message inside group');
-                                core.warning('Warning message inside group');
-                                core.error('Error message inside group');
-
-                                // End the log group using the endGroup function
-                                core.endGroup();
-
-                                // Export a variable to the environment
-                                core.exportVariable('MY_VAR', 'example_value');
-                                
-                                // Set summary function
-                                //core.summary(`Action greeted ${input}, all explored various action core functions`);
-                                core.summary.addRaw(`Action greeted ${input}. Some content here :speech_balloon:`, true)
-
-
-
-      const githubToken = core.getInput('github-token');
-      const giphyApiKey = core.getInput('giphy-api-key');
-  
-      const octokit = new Octokit({ auth: githubToken });
-      const giphy = Giphy(giphyApiKey);
-  
-      const context = github.context;
-      const { owner, repo, number } = context.issue;
-
-      const prComment = await giphy.random('thank you');
-  
-      await octokit.issues.createComment({
-        owner,
-        repo,
-        issue_number: number,
-        body: `### PR - ${number} \n ### 🎉 Thank you for the contribution! \n ![Giphy](${prComment.data.images.downsized.url}) `
-      });
-  
-      core.setOutput('comment-url', `${prComment.data.images.downsized.url}`);
-      console.log(`Giphy GIF comment added successfully! Comment URL: ${prComment.data.images.downsized.url}`);
-    } catch (error) {
-      // console.error('Error:', error);
-      core.setFailed('Invalid secret provided!');
-      
-      // process.exit(1);
-    }
-  }
-  run();
+  // Log a notice and summary
+  core.notice('Action executed successfully.');
+  core.summary(`Action greeted ${nameInput}, set the "greeting" output, and added a path and variable to the environment.`);
+}
+}
+// Register a secret using the setSecret function
+core.info(`Received Phone Number: ${secretPhoneInput}`); 
+core.debug(`Received Phone Number: ${secretPhoneInput}`); 
+core.setSecret(secretPhoneInput);
+core.info(`Secret Phone Number: ${secretPhoneInput}`);
+core.debug(`Secret gipy api key: ${secretPhoneInput}`); // Only visible in debug logs
