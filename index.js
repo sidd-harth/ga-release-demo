@@ -13,7 +13,7 @@ if (core.isDebug()) {
 core.info("================================================");
 
 // Prepare a greeting message
-const greeting = `Hello, ${nameInput}, your phone number is ${secretPhoneInput}`;
+const greeting = `Hello ${nameInput}, your phone number is ${secretPhoneInput}`;
 // Log messages using the info, notice, warning, and error functions
 core.info(`Information message: ${greeting}`);
 core.notice(`Notice message: ${greeting}`);
@@ -28,7 +28,7 @@ core.setOutput('customized_greeting', greeting);
 // Simulate an error scenario
 if (secretPhoneInput.length !== 10) {
   core.error(`Error message - provided phone number is invalid  - ${secretPhoneInput}`);
-  //core.setFailed('Invalid phone number provided!');
+  core.setFailed('Invalid phone number provided!');
 } else {
   switch (inputCountry) {
     case 'india':
@@ -58,7 +58,7 @@ const userData = [
   {data: 'Country', header: true},
   {data: 'Number', header: true},
   {data: nameInput},
-  {data: inputCountry'},
+  {data: inputCountry },
   {data: secretPhoneInput}
 ]
 
