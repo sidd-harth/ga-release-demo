@@ -23,6 +23,6 @@ jobs:
         country: 'india'
 
     - name: Post PR Comment2222222
-      runs: |
+      run: |
           echo "Output is: ${{ steps.test_step.outputs.customized_greeting }}""
           echo $JS_ACTION_PHONE_VAR
