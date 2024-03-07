@@ -40,4 +40,4 @@ jobs:
     - name: Log Data from Previous Step
       run: |
           echo "Output is: ${{ steps.action_step.outputs.customized_greeting }}"
-          echo "Variable - $JS_ACTION_PHONE_VAR"
+          echo "Country Code - $JS_ACTION_PHONE_VAR"
