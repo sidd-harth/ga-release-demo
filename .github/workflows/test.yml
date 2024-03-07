@@ -54,17 +54,16 @@ jobs:
       - name: Group log lines
         run: |
           echo "::group::Custom Log Group"
-          echo "This is a grouped log line."
+          echo "This is a grouped log line 1"
+          echo "line 2"
+          echo "line 3"
           echo "::endgroup::"
 
       - name: Mask a secret
-        run: echo "::add-mask::$MY_SECRET"
+        run: echo "::add-mask::p@$Sw0Rd"
 
       - name: Create a warning
         run: echo "::warning::This is a warning message."
-
-      - name: Set a system path
-        run: echo "::add-path::/usr/local/bin"
 
       - name: Create an error annotation
         run: echo "::error file=app.js,line=1::Missing semicolon"
