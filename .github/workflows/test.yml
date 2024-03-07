@@ -1,5 +1,4 @@
 on:
-  push:
   workflow_dispatch:
     inputs:
       name:
@@ -20,7 +19,7 @@ on:
         options:
           - india
           - usa
-          - others
+          - others  
 
 jobs:
   testing-action:
