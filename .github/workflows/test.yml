@@ -1,4 +1,4 @@
-name: test
+name: Troubleshooting JS Actions
 on:
   workflow_dispatch:
     inputs:
@@ -23,23 +23,21 @@ on:
           - others  
 
 jobs:
-  testing-action:
+  custom-action:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: Post PR Comment
-      id: test_step
+    - name: Invoking Greeting Action
+      id: action_step
       uses: ./
       with:
         name: ${{ inputs.name }}
         phone: ${{ inputs.phone }}
         country: ${{ inputs.country }}
 
-    - name: Post PR Comment2222222
+    - name: Log Data from Previous Step
       run: |
-          echo "Output is: ${{ steps.test_step.outputs.customized_greeting }}""
+          echo "Output is: ${{ steps.action_step.outputs.customized_greeting }}"
+          echo "Variable - $JS_ACTION_PHONE_VAR"

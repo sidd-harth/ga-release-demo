@@ -32,21 +32,15 @@ if (secretPhoneInput.length !== 10) {
 } else {
   switch (inputCountry) {
     case 'india':
-        //const phoneNumber = "+91" + secretPhoneInput;
         // Export a variable to the environment
         core.exportVariable('JS_ACTION_PHONE_VAR', "+91"+secretPhoneInput);
         break;
     case 'canada':
-      //const phoneNumber = "+1" + secretPhoneInput;
-      // Export a variable to the environment
-      core.exportVariable('JS_ACTION_PHONE_VAR', "1"+secretPhoneInput);
+        core.exportVariable('JS_ACTION_PHONE_VAR', "+1"+secretPhoneInput);
         break;
     default:
-      core.exportVariable('JS_ACTION_PHONE_VAR', secretPhoneInput);
-
-  // Log a notice and summary
-  core.summary(`Action greeted ${nameInput}, set the "greeting" output, and added a path and variable to the environment.`);
-}
+        core.exportVariable('JS_ACTION_PHONE_VAR', secretPhoneInput);
+  }
 }
 
 core.info("================================================");
@@ -55,3 +49,7 @@ core.info("================================================");
 core.info(`Received Phone Number: ${secretPhoneInput}`); 
 core.setSecret(secretPhoneInput);
 core.info(`MASKED Received Phone Number: ${secretPhoneInput}`);
+
+  // Log a summary
+core.summary(`Action greeted ${nameInput}, set the "greeting" output, and added a path and variable to the environment.`);
+
