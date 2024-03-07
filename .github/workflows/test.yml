@@ -39,5 +39,45 @@ jobs:
 
     - name: Log Data from Previous Step
       run: |
-          echo "Output is: ${{ steps.action_step.outputs.customized_greeting }}"
-          echo "Country Code - $JS_ACTION_PHONE_VAR"
+          echo "Greeting Output: ${{ steps.action_step.outputs.customized_greeting }}"
+          echo "Country Code: $JS_ACTION_PHONE_VAR"
+
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment variable
+        run: echo "HELLO=World" >> $GITHUB_ENV
+
+      - name: Show environment variable
+        run: echo "Hello, $HELLO!"
+
+      - name: Group log lines
+        run: |
+          echo "::group::Custom Log Group"
+          echo "This is a grouped log line."
+          echo "::endgroup::"
+
+      - name: Mask a secret
+        run: echo "::add-mask::$MY_SECRET"
+
+      - name: Create a warning
+        run: echo "::warning::This is a warning message."
+
+      - name: Set a system path
+        run: echo "::add-path::/usr/local/bin"
+
+      - name: Create an error annotation
+        run: echo "::error file=app.js,line=1::Missing semicolon"
+
+      - name: Set a debug message
+        run: echo "::debug::This is a debug message"
+
+      - name: Create a notice annotation
+        run: echo "::notice file=src/main.js,line=42::Custom notice message"
+
+      - name: Set an output value
+        id: my_output
+        run: echo "::set-output name=myOutput::42"
+
+      - name: Show the output value
+        run: echo "My output value is ${{ steps.my_output.outputs.myOutput }}"

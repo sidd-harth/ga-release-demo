@@ -25923,21 +25923,21 @@ core.info(`Received Phone Number: ${secretPhoneInput}`);
 core.setSecret(secretPhoneInput);
 core.info(`MASKED Received Phone Number: ${secretPhoneInput}`);
 
-// Add a Job Summary
+// // Add a Job Summary
 
-core.summary.addRaw('Some content here :speech_balloon:', true)
-const userData = [
-  {data: 'Name', header: true},
-  {data: 'Country', header: true},
-  {data: 'Number', header: true},
-  {data: nameInput},
-  {data: inputCountry },
-  {data: secretPhoneInput}
-]
+// core.summary.addRaw('Some content here :speech_balloon:', true)
+// const userData = [
+//   {data: 'Name', header: true},
+//   {data: 'Country', header: true},
+//   {data: 'Number', header: true},
+//   {data: nameInput},
+//   {data: inputCountry },
+//   {data: secretPhoneInput}
+// ]
 
-core.summary.addRaw(`:rocket: Action greeted ${nameInput}, set the "greeting" output, and added a path and variable to the environment.`, true)
-// Add an HTML table
-core.summary.addTable([userData])
+// core.summary.addRaw(`:rocket: Action greeted ${nameInput}, set the "greeting" output, and added a path and variable to the environment.`, true)
+// // Add an HTML table
+// core.summary.addTable([userData])
 
 
 
