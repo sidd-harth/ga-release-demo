@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+    #   - name: Zip artifact for deployment
+    #     run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -25,7 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: v6.1.2
+          tag_name: v5.0.0
           release_name: Release ${{ github.ref }}
           body: |
             Changes in this Release
