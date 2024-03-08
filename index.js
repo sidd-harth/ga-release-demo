@@ -56,14 +56,12 @@ function generateTestResults() {
 }
 
 core.summary
-  .addHeading('Sample Summary')
-  .addCodeBlock('console.log(\'Testing Core Toolkit Job Summary Feature\')', 'js')
+  .addHeading('Sample Summary using Core Module')
+  .addCodeBlock('const core = require(\'@actions/core\')', 'js')
   .addTable([
     [{ data: 'Name', header: true }, { data: 'Country', header: true }, { data: 'Number', header: true }],
-    ['Name', nameInput],
-    ['Country', inputCountry],
-    ['Phone', secretPhoneInput]
+    [nameInput, inputCountry, secretPhoneInput]
   ])
-  .addQuote('To be or not to be', 'Shakespeare')
-  .addLink('View Repository', 'https://github.com/sidd-harth/troubleshooting-actions')
+  .addQuote('Phone Number is masked using core.setSecret method')
+  .addLink('View troubleshooting-actions Repository', 'https://github.com/sidd-harth/troubleshooting-actions')
   .write();
