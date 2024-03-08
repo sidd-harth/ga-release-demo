@@ -19,10 +19,11 @@ jobs:
           name: release
           path: release.zip
     
-      - name: Release
-        uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Create Release with softprops/action-gh-release
+        uses: softprops/action-gh-release@v1
         with:
-            repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            automatic_release_tag: "v7.0.0"
-            title: "Development Build"
-            files: release.zip
+          tag_name: ${{ github.ref }}  # Use the pushed tag name
+          name: ${{ github.ref }}  # Optional: Set release name (defaults to tag_name)
+          body: "**Release Notes:**  \n  * (Describe your changes here)"  # Optional release description
+          files: 'release.zip'  # List your release assets here (replace with your pattern)
+          draft: false 
