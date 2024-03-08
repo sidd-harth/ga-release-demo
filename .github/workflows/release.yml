@@ -16,16 +16,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-    #   - name: Zip artifact for deployment
-    #     run: zip release.zip ./* -r
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: release
-          path: release.zip
+      # - uses: actions/checkout@v4
 
       - name: Create Release
         id: create_release
