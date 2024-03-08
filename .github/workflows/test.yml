@@ -59,24 +59,29 @@ jobs:
           echo "line 3"
           echo "::endgroup::"
 
-      - name: Mask a secret
-        run: echo "::add-mask::p@$Sw0Rd"
+      - name: Mask a value
+        env:
+          key: p@$Sw0Rd
+        run: |
+          echo "UnMasked key = $key"
+          echo "::add-mask::$key"
+          echo "Masked key = $key"
 
       - name: Create a warning
         run: echo "::warning::This is a warning message."
 
       - name: Create an error annotation
-        run: echo "::error file=app.js,line=1::Missing semicolon"
+        run: echo "::error file=index.js,line=1::Missing semicolon"
 
       - name: Set a debug message
         run: echo "::debug::This is a debug message"
 
       - name: Create a notice annotation
-        run: echo "::notice file=src/main.js,line=42::Custom notice message"
+        run: echo "::notice file=src/index.js,line=42::Custom notice message"
 
       - name: Set an output value
         id: my_output
-        run: echo "::set-output name=myOutput::42"
+        run: echo "myOutput=007" >> "$GITHUB_OUTPUT"
 
       - name: Show the output value
         run: echo "My output value is ${{ steps.my_output.outputs.myOutput }}"
