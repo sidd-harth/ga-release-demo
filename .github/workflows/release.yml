@@ -20,8 +20,9 @@ jobs:
           path: release.zip
     
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            automatic_release_tag: "latest"
+            title: "Development Build"
             files: release.zip
-            tag_name: v1.0.0
-            token: ${{ secrets.GITHUB_TOKEN }}
