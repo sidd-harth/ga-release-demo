@@ -25923,11 +25923,6 @@ core.info(`Received Phone Number: ${secretPhoneInput}`);
 core.setSecret(secretPhoneInput);
 core.info(`MASKED Received Phone Number: ${secretPhoneInput}`);
 
-function generateTestResults() {
-  // ... your logic here ...
-  return 'Test results go here';
-}
-
 core.summary
   .addHeading('Sample Summary using Core Module')
   .addCodeBlock('const core = require(\'@actions/core\')', 'js')
