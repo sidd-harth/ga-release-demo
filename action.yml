@@ -1,22 +1,21 @@
-name: 'Giphy PR Comment'
-description: 'Add a Giphy GIF comment to new pull requests.'
+name: 'Demo - Troubleshooting Custom JavaScript Actions'
+description: 'This actions explains the use of various action core module methods'
 inputs:
   name:
-    description: 'Sample Hardcoded Name'
-    required: false
-    default: 'Siddharthhhhhhhh'
+    description: 'Provide User Name'
+    required: true
+    default: 'Siddharth'
   phone:
-    description: 'Sample Hardcoded Name'
-    required: false
-    default: 'Siddharthhhhhhhh'
+    description: 'Provide User Phone Number'
+    required: true
+    default: '0123456789'
   country:
-    description: 'Sample Hardcoded Name'
-    required: false
-    default: 'Siddharthhhhhhhh'
+    description: 'Provide User Country'
+    required: true
+    default: 'india'
 outputs:
   customized_greeting:
-   description: 'GitHub Token'
-
+   description: 'Setting output, to be used in subsequent steps'
 
 runs:
   using: 'node20'

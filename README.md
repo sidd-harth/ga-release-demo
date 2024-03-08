@@ -1,3 +1,3 @@
-# js-action-pr-giphy-comment
+# Troubleshooting Custom JavaScript Actions'
 
-Sample Action for Demo purpose.
+Sample repo for Troubleshooting Custom JavaScript Actions.

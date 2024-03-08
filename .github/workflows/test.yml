@@ -1,4 +1,4 @@
-name: Troubleshooting JS Actions
+name: Troubleshooting JavaScript Action
 on:
   workflow_dispatch:
     inputs:
@@ -8,7 +8,7 @@ on:
         default: 'Sid'
         type: string
       phone:
-        description: 'Phone Number'
+        description: 'userPhone Number'
         required: true
         default: 9876543210
         type: number
