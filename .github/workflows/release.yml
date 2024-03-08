@@ -19,16 +19,21 @@ jobs:
           name: release
           path: release.zip
 
-      - name: Configure access token
+      - name: Changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: Changelog
+        env:
+            REPO: ${{ github.repository }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: echo "::add-mask::{{ secrets.GITHUB_TOKEN }}"
-
-      - name: Create Release with softprops/action-gh-release
-        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}  # Use the pushed tag name
-          name: ${{ github.ref }}  # Optional: Set release name (defaults to tag_name)
-          body: "**Release Notes:**  \n  * (Describe your changes here)"  # Optional release description
-          files: 'release.zip'  # List your release assets here (replace with your pattern)
-          draft: false 
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
