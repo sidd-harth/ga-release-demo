@@ -18,7 +18,12 @@ jobs:
         with:
           name: release
           path: release.zip
-    
+
+      - name: Configure access token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "::add-mask::{{ secrets.GITHUB_TOKEN }}"
+
       - name: Create Release with softprops/action-gh-release
         uses: softprops/action-gh-release@v1
         with:
