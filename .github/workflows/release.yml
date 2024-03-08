@@ -23,4 +23,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
             files: release.zip
-            #tag_name:
+            tag_name: v1.0.0
