@@ -24,3 +24,4 @@ jobs:
         with:
             files: release.zip
             tag_name: v1.0.0
+            token: ${{ secrets.GITHUB_TOKEN }}
