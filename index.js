@@ -56,13 +56,14 @@ function generateTestResults() {
 }
 
 core.summary
-  .addHeading('Test Results')
-  .addCodeBlock(generateTestResults(), 'js')
+  .addHeading('Sample Summary')
+  .addCodeBlock('console.log(\'Testing Core Toolkit Job Summary Feature\')', 'js')
   .addTable([
-    [{ data: 'File', header: true }, { data: 'Result', header: true }],
-    ['foo.js', 'Pass'],
-    ['bar.js', 'Fail'],
-    ['test.js', 'Pass']
+    [{ data: 'Name', header: true }, { data: 'Country', header: true }, { data: 'Number', header: true }],
+    ['Name', nameInput],
+    ['Country', inputCountry],
+    ['Phone', secretPhoneInput]
   ])
-  .addLink('View staging deployment!', '[7](https://github.com)')
+  .addQuote('To be or not to be', 'Shakespeare')
+  .addLink('View Repository', 'https://github.com/sidd-harth/troubleshooting-actions')
   .write();
